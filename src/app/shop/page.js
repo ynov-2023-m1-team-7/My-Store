@@ -4,6 +4,7 @@ import Alert from "@/components/UI/Alert";
 import ProductsGrid from "@/components/products/ProductsGrid";
 import TitlePage from "@/components/UI/TitlePage";
 import ProductsCounter from "@/components/products/ProductsCounter";
+import MultiRangeSlider from "@/components/UI/MultiRangeSlider";
 
 export default async function Page({
     searchParams,
@@ -17,6 +18,9 @@ export default async function Page({
 
     return (
         <div className="container mx-auto">
+
+            <MultiRangeSlider min={0} max={1000}/>
+
             <TitlePage title="Shop" />
             <ProductsCounter productsLength={products.data.length} />
             <ProductsGrid products={products.data} />
