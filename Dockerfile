@@ -10,7 +10,7 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3031
+EXPOSE 3000
 
 #command to build the image
 # docker build -t my-store .
