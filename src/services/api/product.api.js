@@ -1,11 +1,13 @@
 export async function getProducts(take) {
     try {
+        console.log(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/products?take=${take}`);
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/products?take=${take}`, {
             cache: "no-store",
             headers: {
                 "Content-Type": "application/json",
             },
         });
+        console.log(res);
         const data = await res.json();
         return data;
     }

@@ -12,6 +12,9 @@ COPY . .
 
 RUN npm run build
 
+# permission to script bash
+RUN chmod +x ./wait-for-it.sh
+
 EXPOSE 3000
 
 CMD ["npm", "run", "start"]
