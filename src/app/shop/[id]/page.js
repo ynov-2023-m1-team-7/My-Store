@@ -21,6 +21,13 @@ export default function Page() {
     const [slideIndex, setSlideIndex] = useState(0);
     const [showFancyBox, setShowFancyBox] = useState(false);
     const [error, setError] = useState(null);
+    // const [min, setMin] = useState(0);
+    // const [max, setMax] = useState(1000);
+
+    // useEffect(() => {
+    //     setMin(localStorage.getItem('minValue'));
+    //     setMax(localStorage.getItem('maxValue'));
+    // }, []);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -53,6 +60,27 @@ export default function Page() {
             fetchPlaceholderImage();
         }
     }, [product]);
+
+// fetch filter by range price
+    // useEffect(() => {
+    //     const similarProduct = async () => {
+    //         try {
+    //           const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/getProducts`, {
+    //             headers: {
+    //               "Content-Type":"Application/json"
+    //             },
+    //             method: 'POST',
+    //             body: JSON.stringify({ min: {min}, max: {max}})
+    //           });
+    //           const dataJson = await response.json();
+    //           setData(dataJson);
+    //         }
+    //         catch(error) {
+    //           setError(error)
+    //         }
+            
+    //     }
+    // }, [product]);
 
     if (loading) return <Loader />;
 
@@ -139,6 +167,7 @@ export default function Page() {
                     <p className="mb-3 font-semibold text-lg">{product.price} €</p>
                     <p className="leading-7">{product.description}</p>
                 </div>
+
             </div>
         </div>
     );
