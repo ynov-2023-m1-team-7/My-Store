@@ -14,6 +14,7 @@ RUN npm run build
 
 # permission to script bash
 RUN chmod +x ./wait-for-it.sh
+RUN chmod +x ./wait-for-services-api.sh
 
 EXPOSE 3000
 
