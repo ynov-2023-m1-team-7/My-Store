@@ -1,15 +1,15 @@
-import { getProducts } from '@/services/api/product.api';
-import Link from 'next/link';
+// import { getProducts } from '@/services/api/product.api';
+// import Link from 'next/link';
 
-const Index = ({ current_page }) => {
+// const Index = ({ current_page }) => {
 
-    const products = await getProducts();
+//     const products = await getProducts();
 
-    return (
-        <div class="grid grid-cols-4 gap-4">
+//     return (
+//         <div class="grid grid-cols-4 gap-4">
             
-        </div>
-    );
-}
+//         </div>
+//     );
+// }
 
-export default Index;
+// export default Index;
