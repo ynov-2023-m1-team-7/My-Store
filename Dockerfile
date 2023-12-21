@@ -1,4 +1,4 @@
-FROM node:18.12.0-alpine3.15
+FROM node:18.12.0-alpine
 
 WORKDIR /app
 
@@ -10,7 +10,11 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build
+
 EXPOSE 3000
+
+CMD ["npm", "run", "start"]
 
 #command to build the image
 # docker build -t my-store .
