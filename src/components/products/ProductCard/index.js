@@ -1,27 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import ImageComponent from '@/components/UI/ImageComponent';
 
 const Index = ({ product }) => {
     return (
         <div className="group/card max-w-sm bg-white rounded-lg">
             <Link className="group/thumbnail thumbnail" href={`/shop/${product.id}`}>
                 <div className="overflow-hidden w-[300px] h-[300px] relative">
-                    <Image
-                        className="group-hover/thumbnail:opacity-100 group-hover/thumbnail:scale-105 transition ease-in-out delay-150"
-                        alt={product.name}
-                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${product.thumbnail}`}
-                        fill
-                        sizes="100%"
-                        style={{ objectFit: "cover" }}
-                    />
-                    <Image
-                        className="opacity-100 group-hover/thumbnail:scale-105 group-hover/thumbnail:opacity-0 transition ease-in-out delay-150"
-                        alt={product.name}
-                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${product.packshot}`}
-                        fill
-                        sizes="100%"
-                        style={{ objectFit: "cover" }}
-                    />
+                    <ImageComponent imagePath={product.thumbnail} altText={product.name} />
                 </div>
             </Link>
             <div className="py-5">

@@ -3,7 +3,7 @@ const nextConfig = {
     images: {
         formats: ['image/webp'],
         domains: [
-            "127.0.0.1",
+            // "127.0.0.1",
             process.env.NEXT_PUBLIC_BACKEND_URL,
         ],
     },

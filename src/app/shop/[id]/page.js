@@ -9,6 +9,7 @@ import ProductFancyBox from "@/components/products/ProductFancyBox";
 import Loader from "@/components/UI/Loader";
 import Alert from "@/components/UI/Alert";
 import { getBase64 } from '../../../lib/base64';
+import ImageComponent from '@/components/UI/ImageComponent';
 
 export default function Page() {
 
@@ -44,7 +45,7 @@ export default function Page() {
 
     useEffect(() => {
         const fetchPlaceholderImage = async () => {
-            const placeholder = await getBase64(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${product.thumbnail}`);
+            const placeholder = await getBase64(`${product.thumbnail}`);
             setPlaceholderImage(placeholder);
         }
         if (product) {
@@ -93,23 +94,19 @@ export default function Page() {
                     <div
                         onClick={() => setShowFancyBox(true)}
                         className="group/show w-4/5 h-[550px] overflow-hidden cursor-pointer">
-                        <Image
-                            blurDataURL={placehodlerImage}
+                        <ImageComponent 
                             className="object-cover h-full w-full group-hover/show:scale-105 transition ease-in-out delay-150 z-1"
-                            alt={product.name}
-                            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${selectedImage}`}
-                            width={500}
-                            height={500}
+                            imagePath={`${selectedImage}`} 
+                            altText={product.name} 
+                        
                         />
                     </div>
                     <div className="carousel flex mt-4 overflow-hidden">
                         <div className="item w-[100px] h-[100px] mr-2">
-                            <Image
+                            <ImageComponent 
                                 className="cursor-pointer object-cover h-full w-full "
-                                alt={product.name}
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${product.thumbnail}`}
-                                width={100}
-                                height={100}
+                                imagePath={product.thumbnail} 
+                                altText={product.name} 
                                 onMouseOver={() => {
                                     setSelectedImage(product.thumbnail);
                                     setSlideIndex(0);
@@ -121,12 +118,10 @@ export default function Page() {
                             />
                         </div>
                         <div className="item w-[100px] h-[100px]">
-                            <Image
-                                className="cursor-pointer object-cover h-full w-full"
-                                alt={product.name}
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${product.packshot}`}
-                                width={100}
-                                height={100}
+                            <ImageComponent
+                                className="cursor-pointer object-cover h-full w-full" 
+                                imagePath={product.packshot} 
+                                altText={product.name} 
                                 onMouseOver={() => {
                                     setSelectedImage(product.packshot);
                                     setSlideIndex(1);
