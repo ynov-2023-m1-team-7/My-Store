@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { getProducts } from "@/services/api/product.api.js";
 import Alert from "@/components/UI/Alert";
@@ -5,21 +6,41 @@ import ProductsGrid from "@/components/products/ProductsGrid";
 import TitlePage from "@/components/UI/TitlePage";
 import ProductsCounter from "@/components/products/ProductsCounter";
 import MultiRangeSlider from "@/components/UI/MultiRangeSlider";
+import { useEffect, useState } from "react";
 
-export default async function Page({
+export default function Page({
     searchParams,
 }) {
-
+    
+    const [min, setMin] = useState(0);
+    const [max, setMax] = useState(1000);
+    const [products, setProducts] = useState({});
+    
     const { take = 8 } = searchParams || {};
 
-    const products = await getProducts(take);
+    useEffect(() => {
+        console.log('fetch 2')
+        fetchItem();
+    }, [min, max])
+
+    useEffect(()=>{
+        console.log('fetch 1')
+        fetchItem();
+    }, [])
+
+    const fetchItem=() => {
+        getProducts(take)
+        .then((res) => {
+            setProducts(res);
+        });
+    }
 
     if (!products.data || products.success === false) return <Alert message={products.message} type="error" />;
 
     return (
         <div className="container mx-auto">
 
-            <MultiRangeSlider min={0} max={1000}/>
+            <MultiRangeSlider min={min} setMin={setMin} max={max} setMax={setMax}/>
 
             <TitlePage title="Shop" />
             <ProductsCounter productsLength={products.data.length} />

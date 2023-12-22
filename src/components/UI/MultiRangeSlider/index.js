@@ -1,14 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const MultiRangeSlider = ({ min, max }) => {
-    const [minValue, setMinValue] = useState(min);
-    const [maxValue, setMaxValue] = useState(max);
+const MultiRangeSlider = ({ min, setMin, max, setMax }) => {
 
   useEffect(() => {
-    localStorage.setItem('minValue', minValue)
-    localStorage.setItem('maxValue', maxValue)
-  },[minValue, maxValue])
+    localStorage.setItem('minValue', min)
+    localStorage.setItem('maxValue', max)  
+  },[min, max])
 
   return (
     <div className="flex flex-col w-96">
@@ -16,9 +14,9 @@ const MultiRangeSlider = ({ min, max }) => {
         <div className="rounded-md">
           <span className="p-2 font-semibold">Min</span>
           <input
-            onChange={(e)=> setMinValue(e.target.value)}
+            onChange={(e)=> setMin(e.target.value)}
             type="number"
-            value={minValue}
+            value={min}
             className="w-20 rounded-md border border-gray-400 text-right"
           />
           <span className="p-2 font-semibold">€</span>
@@ -27,9 +25,9 @@ const MultiRangeSlider = ({ min, max }) => {
         <div className="rounded-md">
           <span className="p-2 font-semibold">Max</span>
           <input
-            onChange={(e)=> setMaxValue(e.target.value)}
+            onChange={(e)=> setMax(e.target.value)}
             type="number"
-            value={maxValue}
+            value={max}
             className="w-20 rounded-md border border-gray-400 text-right"
           />
           <span className="p-2 font-semibold">€</span>
